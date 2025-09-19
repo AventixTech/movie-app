@@ -28,13 +28,13 @@ console.log("Token from localStorage:", token);
       setEmail(user?.email || '');
     }
     
-    // default date to tomorrow
+    
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     setMovieDate(tomorrow.toISOString().split('T')[0]);
    
     
-    // default ticket price based on movie
+    // default ticket price 
     if (movie) {
       setTicketPrice(movie.ticketPrice || 250);
     }
@@ -76,20 +76,20 @@ const handleSubmit = async (e) => {
 
   if (!validateForm()) return;
 
-  // Make sure movieId exists
+  
   if (!movie?.id) {
     console.error("Cannot book: movie.id is undefined");
     return;
   }
-  const userData = JSON.parse(atob(token.split(".")[1])); // Decode JWT payload
+  const userData = JSON.parse(atob(token.split(".")[1])); 
   console.log("Decoded user:", userData);
 const bookingData = { 
   movieId: movie.id,
   movieName: movie.title || '',
-  email: userData.email,  // must match backend schema
-   name: userData.name,    // must not be empty
+  email: userData.email,  
+   name: userData.name,    
   
-  userEmail: userData.email, // ✅ send as userEmail
+  userEmail: userData.email, 
    userName: userData.name, 
   movieDate: movieDate,
   bookingTime: Date.now(),
@@ -122,8 +122,8 @@ const bookingData = {
 
   } catch (err) {
     console.error("Booking failed:", err.response?.data || err.message || err);
-     console.error("Full error object:", err); // Add this
-    console.error("Error response:", err.response); // Add this
+    console.error("Full error object:", err);
+    console.error("Error response:", err.response);
   }
 };
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const ResetPassword = () => {
-  const { token } = useParams();  // get token from URL
+  const { token } = useParams();  
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -31,7 +31,7 @@ const handleSubmit = async (e) => {
 
     setMessage('Password reset successful! Redirecting to login...');
 
-    // ✅ redirect after 2 seconds
+    
     setTimeout(() => {
       navigate('/login');
     }, 2000);

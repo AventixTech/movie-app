@@ -11,11 +11,11 @@ export const AuthProvider = ({ children }) => {
   const token = localStorage.getItem('token');
   if (token) {
     try {
-      const decoded = jwtDecode(token); // decoded will have userId, isAdmin, iat, exp
+      const decoded = jwtDecode(token); 
       console.log("Decoded JWT:", decoded);
       console.log("Raw JWT:", token);
 
-      // Only set user if decoded exists
+      
       setUser({
         userId: decoded.userId,
         isAdmin: decoded.isAdmin,

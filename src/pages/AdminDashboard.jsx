@@ -880,15 +880,15 @@ const AdminDashboard = () => {
       setIsLoading(true);
       const res = await axios.get("http://localhost:5000/api/bookings");
       //  console.log("Fetched bookings:", res.data);
-        console.log("Bookings from API:", res.data); // ✅ Add here
+        console.log("Bookings from API:", res.data); 
       setBookings(res.data);
       const data = res.data;
 
 
 
-      // Sort by bookingTime (latest first)
+      
       const sorted = [...data].sort((a, b) => {
-        // Handle cases where bookingTime might be missing
+        
         const timeA = a.bookingTime ? new Date(a.bookingTime).getTime() : 0;
         const timeB = b.bookingTime ? new Date(b.bookingTime).getTime() : 0;
         return timeB - timeA;
@@ -961,14 +961,14 @@ const AdminDashboard = () => {
 
   const confirmDelete = async () => {
     if (deleteId) {
-      console.log("🟢 Frontend: Deleting booking with ID:", deleteId);
+      console.log("Frontend: Deleting booking with ID:", deleteId);
       try {
         await deleteBooking(deleteId);
         setBookings(bookings.filter(b => b._id !== deleteId));
         setShowDeleteModal(false);
         setDeleteId(null);
       } catch (err) {
-        console.error("🔴 Frontend: Delete failed", err.response || err.message || err);
+        console.error(" Frontend: Delete failed", err.response || err.message || err);
         setError('Failed to delete booking');
       }
     }
@@ -1203,7 +1203,7 @@ const AdminDashboard = () => {
                         )}
                       </td>
 
-                      {/* Booking Time (not editable) */}
+                      
                       <td>{booking.bookingTime ? new Date(booking.bookingTime).toLocaleString() : '-'}</td>
 
                       {/* Movie Date (editable) */}

@@ -38,13 +38,13 @@ router.post('/register', async (req, res) => {
     // Generate JWT
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' });
 
-    // ✅ Log details in terminal
+    // Log details in terminal
     console.log('New user registered:');
     console.log('Name:', user.name);
     console.log('Email:', user.email);
     console.log('JWT:', token);
 
-    // ✅ Send response
+    // Send response
     res.status(201).json({ token, user: payload });
 
   } catch (err) {
@@ -71,16 +71,16 @@ router.post('/login', async (req, res) => {
       isAdmin: user.isAdmin,
     };
 
-    // ✅ Generate JWT with payload
+    // Generate JWT with payload
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' });
 
-    // ✅ Log details to terminal
+    
     console.log('User logged in:');
     console.log('Name:', user.name);
     console.log('Email:', user.email);
     console.log('JWT:', token);
 
-    // ✅ Send response
+    // Send response
     res.json({ token, user: payload });
 
   } catch (err) {

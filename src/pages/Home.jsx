@@ -18,7 +18,7 @@ const Home = () => {
   useEffect(() => {
     let endpoint = '';
     const params = [];
-    // Normalize search: trim and collapse multiple spaces
+    
     const normalizedSearch = search.trim().replace(/\s+/g, ' ');
     if (normalizedSearch) {
       endpoint = `/search/movie?query=${encodeURIComponent(normalizedSearch)}&page=${page}`;
@@ -51,7 +51,7 @@ const Home = () => {
       bookingTime: Date.now(),
     });
     setSelectedMovie(null);
-    // Optionally show a success message
+    
   };
 
   return (

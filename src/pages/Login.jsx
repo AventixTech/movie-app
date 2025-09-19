@@ -6,7 +6,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { loginUser, registerUser, user } = useContext(AuthContext);
 
-  const [mode, setMode] = useState('login'); // 'login', 'register', 'forgot'
+  const [mode, setMode] = useState('login'); 
   const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
   const [resetEmail, setResetEmail] = useState('');
   const [error, setError] = useState('');

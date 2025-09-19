@@ -4,7 +4,7 @@ const Booking = require("../models/Booking");
 // const auth = require("../middleware/auth"); // enable when JWT ready
 const router = express.Router();
 
-// ✅ Create booking
+// Create booking
 router.post("/", async (req, res) => {
   
   try {
@@ -44,7 +44,7 @@ const newBooking = new Booking({
   }
 });
 
-// ✅ Get all bookings (latest first)
+//  Get all bookings (latest first)
 router.get("/", async (req, res) => {
   try {
     const bookings = await Booking.find().sort({ createdAt: -1 });
@@ -55,7 +55,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ✅ Get totals per booking
+//  Get totals per booking
 router.get("/totals", async (req, res) => {
   try {
     const bookings = await Booking.aggregate([
@@ -75,7 +75,7 @@ router.get("/totals", async (req, res) => {
   }
 });
 
-// ✅ Get overall revenue
+//  Get overall revenue
 router.get("/revenue", async (req, res) => {
   try {
     const result = await Booking.aggregate([
@@ -116,13 +116,13 @@ router.delete("/:id", async (req, res) => {
       deletedBooking,
     });
   } catch (error) {
-    console.error("❌ Delete booking error:", error);
+    console.error(" Delete booking error:", error);
     res.status(500).json({ error: "Server error" });
   }
 });
 
 
-// ✅ Update booking
+// Update booking
 router.put("/:id", async (req, res) => {
   try {
     const booking = await Booking.findByIdAndUpdate(
