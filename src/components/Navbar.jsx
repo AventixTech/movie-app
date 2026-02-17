@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-
+import AuthModal from './AuthModal';
 
 const genres = [
   { id: '', name: 'All Genres' },
@@ -76,6 +76,7 @@ const Navbar = ({ filters, setFilters, search, setSearch, filterDate, setFilterD
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
   const { user, isAdmin, logout } = useContext(AuthContext);
+   const [showAuthModal, setShowAuthModal] = useState(false);
   console.log("Current user:", user);
   console.log("Is admin:", isAdmin);
   console.log("User email:", user?.email);
@@ -200,7 +201,7 @@ const Navbar = ({ filters, setFilters, search, setSearch, filterDate, setFilterD
 
         </div>
         
-        <div style={{ marginLeft: '1.5rem' }}>
+        {/* <div style={{ marginLeft: '1.5rem' }}>
           {user ? (
   <>
     <span>{user.name || user.email}</span>
@@ -215,6 +216,24 @@ const Navbar = ({ filters, setFilters, search, setSearch, filterDate, setFilterD
       </div>
     </nav>
   );
+}; */}
+<div style={{ marginLeft: '1.5rem' }}>
+        {user ? (
+          <>
+            <span>{user.name || user.email}</span>
+            <button onClick={logout}>Logout</button>
+          </>
+        ) : (
+          <button onClick={() => setShowAuthModal(true)}>Login / Signup</button>
+        )}
+      </div>
+      
+      {/* Add the AuthModal component */}
+      <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
+</div>
+     </nav>
+  );
 };
+
 
 export default Navbar;

@@ -35,9 +35,10 @@ console.log("Token from localStorage:", token);
    
     
     // default ticket price 
-    if (movie) {
-      setTicketPrice(movie.ticketPrice || 250);
-    }
+    // if (movie) {
+    //   setTicketPrice(movie.ticketPrice || 250);
+    // }
+    setTicketPrice(250); 
   }, [user, movie]);
 
   const validateForm = () => {
@@ -115,7 +116,7 @@ const bookingData = {
     );
 
     console.log("Booking success:", res.data);
-    const createdBooking = res.data.booking;
+     const createdBooking = res.data.booking;
     setLatestBooking(createdBooking);
     setTotalAmount(res.data.totalAmount || seats * Number(ticketPrice));
     setSuccess(true);
@@ -130,7 +131,7 @@ const bookingData = {
 
   const handleSeatChange = (change) => {
     const newSeats = seats + change;
-    if (newSeats >= 1 && newSeats <= 10) {
+    if (newSeats >= 1 && newSeats <= 5) {
       setSeats(newSeats);
     }
   };
@@ -279,7 +280,7 @@ const bookingData = {
                   {errors.movieDate && <span className="error-text">{errors.movieDate}</span>}
                 </div>
               
-                <div className="form-group">
+                {/* <div className="form-group">
                   <label htmlFor="ticketPrice">
                     <FaTicketAlt /> Price per Ticket (₹)
                   </label>
@@ -293,7 +294,14 @@ const bookingData = {
                     className={errors.ticketPrice ? 'error' : ''}
                   />
                   {errors.ticketPrice && <span className="error-text">{errors.ticketPrice}</span>}
-                </div>
+                </div> */}
+                <div className="form-group">
+  <label>
+    <FaTicketAlt /> Price per Ticket (₹)
+  </label>
+  <p style={{ margin: "8px 0", fontWeight: "bold" }}>₹250</p>
+</div>
+
                 <div className="total-price">
                   <span>Total Amount</span>
                   <span>
